@@ -7,6 +7,10 @@ from Crypto.Cipher import AES
 from flask import Flask, jsonify
 app = Flask(__name__)
 
+@app.route("/")
+def hello():
+    return "Hello, this is the server for my FBLA Quiz app"
+
 @app.route('/get_questions/<string:encoded_pickled_pubkey>')
 def get_questions(encoded_pickled_pubkey: str):
     with open("questions.json", "r") as questions:

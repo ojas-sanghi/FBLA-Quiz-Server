@@ -5,17 +5,20 @@ import codecs
 from Crypto.Cipher import AES
 
 from flask import Flask, jsonify
+
 app = Flask(__name__)
+
 
 @app.route("/")
 def hello():
     return "Hello, this is the server for my FBLA Quiz app"
 
-@app.route('/get_questions/<string:encoded_pickled_pubkey>')
+
+@app.route("/get_questions/<string:encoded_pickled_pubkey>")
 def get_questions(encoded_pickled_pubkey: str):
     with open("questions.json", "r") as questions:
-        questions = questions.read() 
-    
+        questions = questions.read()
+
     # generate AES key
     aes_key = rsa.randnum.read_random_bits(128)
 
@@ -24,10 +27,14 @@ def get_questions(encoded_pickled_pubkey: str):
     aes_nonce = aes_cipher.nonce
 
     # encrypt questions with AES instance
-    encrypted_questions, aes_tag = aes_cipher.encrypt_and_digest(questions.encode("utf8"))
+    encrypted_questions, aes_tag = aes_cipher.encrypt_and_digest(
+        questions.encode("utf8")
+    )
 
     # decode serialized PublicKey object into bytes
-    decoded_pickle = codecs.decode(encoded_pickled_pubkey.replace("\\", "/").encode(), "base64")
+    decoded_pickle = codecs.decode(
+        encoded_pickled_pubkey.replace("\\", "/").encode(), "base64"
+    )
     # unpickle bytes to make pubkey
     rsa_pubkey = pickle.loads(decoded_pickle)
 
@@ -41,6 +48,6 @@ def get_questions(encoded_pickled_pubkey: str):
         data: bytes = list_of_data[i]
         new_data = codecs.encode(data, "base64").decode()
         list_of_data[i] = new_data
-        
+
     # return it as JSON
     return jsonify(list_of_data)

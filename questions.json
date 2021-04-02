@@ -120,7 +120,7 @@
         "id": 10,
         "type": "saq",
         "question": "Current president and CEO of FBLA-PBL (first and last name)",
-        "answer": "Alexander Graham"
+        "answer": "alexander graham"
     },
     {
         "id": 11,
@@ -194,7 +194,7 @@
         "id": 16,
         "type": "saq",
         "question": "What is the full name of FBLA's college division?",
-        "answer": "Phi Beta Lambda"
+        "answer": "phi beta lambda"
     },
     {
         "id": 17,
@@ -246,7 +246,7 @@
         "id": 20,
         "type": "blank",
         "question": "Level one of the BAA is: ______",
-        "answer": "Future"
+        "answer": "future"
     },
     {
         "id": 21,

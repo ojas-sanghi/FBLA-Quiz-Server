@@ -455,7 +455,7 @@
     {
         "id": 37,
         "type": "tf",
-        "question": "True/False: Indiana was the FBLA state chapter",
+        "question": "True/False: Indiana was the first FBLA state chapter",
         "options": [
             "True",
             "False"
